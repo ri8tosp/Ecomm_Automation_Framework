@@ -24,62 +24,62 @@ public class ProductCatalogue extends Abstractcomponents
 		PageFactory.initElements(driver, this);
 	}
 
-	
-
 	@FindBy(xpath = "//div[contains(@class,'mb-3')]")
 	List<WebElement> products;
-	
+
 	@FindBy(className = "ng-animating")
 	WebElement animation;
-	
-	
-	
-	
+
 	By productVisibility = By.xpath("//div[contains(@class,'mb-3')]");
-	By addToCart = By.xpath("//button[2]");
-    By toastmessage = By.id("toast-container");
+	By addToCart = By.xpath(".//button[2]");
+	By toastmessage = By.id("toast-container");
 	
 	
-	public List<WebElement> getProductList()
+	
+	
+
+	public List<WebElement> getProductList() 
 	{
 		waitForElementToAppear(productVisibility);
 		return products;
 	}
-	
-	
-	
-	public WebElement getProductByName(String productName)
-	{
-		
 
-		WebElement product = getProductList().stream().filter(
+	public WebElement getProductByName(String productName) {
 
-				prod -> prod.findElement(By.xpath("//h5")).getText().equalsIgnoreCase(productName)).findFirst()
-				.orElse(null);
-		
+		/*
+		 * WebElement product = getProductList().stream().filter(
+		 * 
+		 * prod ->
+		 * prod.findElement(By.xpath("//b")).getText().equalsIgnoreCase(productName)).
+		 * findFirst() .orElse(null);
+		 */
+
+		WebElement product = null;
+
+		for (WebElement ele : getProductList()) {
+
+			if (ele.findElement(By.xpath(".//b")).getText().equalsIgnoreCase(productName))
+				product = ele;
+		}
+
 		return product;
+
 	}
-	
-	
+
 	public void addProductToCart(String productName)
-	
+
 	{
 		getProductByName(productName).findElement(addToCart).click();
 //		waitForElementToDisappear(animation);
 //		waitForElementToAppear(toastmessage);
 
-		
-		
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-			
+
 	}
-	
-	
 
 }

@@ -25,7 +25,7 @@ public class ErrorValidationTest extends BaseTest
 	// we are clubbing multiple test cases into one java file with similar functionality in this case 
 	// error validation
 
-	@Test(groups={"ErrorHandling"})
+	@Test(groups="ErrorHandling")
 	
 	public void LoginErrorValidaiton() 
 	

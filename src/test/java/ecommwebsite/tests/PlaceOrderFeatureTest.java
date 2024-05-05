@@ -6,6 +6,7 @@ import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import ecommwebsite.pageobjects.CheckOutPage;
@@ -16,17 +17,15 @@ import ecommwebsite.pageobjects.ProductCatalogue;
 import ecommwebsite.testComponents.BaseTest;
 
 public class PlaceOrderFeatureTest extends BaseTest {
-	
-	String productName = "Zara Coat 3";
 
-	@Test
-	public void placeOrderTestCase() throws IOException
+
+
+	@Test(dataProvider = "getData", groups = "Purchase")
+	public void placeOrderTestCase(String email, String pwd, String productName) throws IOException
 
 	{
 
-	
-
-		ProductCatalogue productCatalogue = landingPage.logIntoApp("rahulexample@abc.com", "ABCD123@abc");
+		ProductCatalogue productCatalogue = landingPage.logIntoApp(email, pwd);
 
 		List<WebElement> products = productCatalogue.getProductList();
 
@@ -47,24 +46,30 @@ public class PlaceOrderFeatureTest extends BaseTest {
 		AssertJUnit.assertEquals(confirmedOrder.getConfirmationMsg(), "THANKYOU FOR THE ORDER.");
 
 	}
-	
-	
-	
-	// Verifying that the product ordered is available under the orders tab only after order is placed
-	
+
+	// Verifying that the product ordered is available under the orders tab only
+	// after order is placed
 
 	@Test(dependsOnMethods = { "placeOrderTestCase" })
-	public void validatingOrderHistoryPage() 
-	{
+	public void validatingOrderHistoryPage() {
+		
+		String productName = "Zara Coat 3";
 
 		ProductCatalogue productCatalogue = landingPage.logIntoApp("rahulexample@abc.com", "ABCD123@abc");
-		
+
 		OrderPage orderPage = productCatalogue.goToOrderPage();
-		
+
 		Assert.assertTrue(orderPage.verifyOrderIsDisplayed(productName));
-		
+
 		System.out.println("The product you added in cart is " + orderPage.displayAddedProductName(productName));
 
 	}
 
+	@DataProvider()
+	public Object[][] getData()
+
+	{
+		return new Object[][] { { "rahulexample@abc.com", "ABCD123@abc", "ZARA COAT 3" },
+				{ "harry@styles.com", "ABCD123@abc", "IPHONE 13 PRO" } };
+	}
 }
