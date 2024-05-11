@@ -20,7 +20,7 @@ import ecommwebsite.testComponents.BaseTest;
 public class PlaceOrderFeatureTest extends BaseTest {
 
 	@Test(dataProvider = "getData", groups = "Purchase")
-	public void placeOrderTestCase(HashMap <String, String > map) throws IOException
+	public void placeOrderTestCase(HashMap<String, String> map) throws IOException
 
 	{
 
@@ -49,7 +49,7 @@ public class PlaceOrderFeatureTest extends BaseTest {
 	// Verifying that the product ordered is available under the orders tab only
 	// after order is placed
 
-	@Test(dependsOnMethods = { "placeOrderTestCase" })
+	@Test(dependsOnMethods = { "placeOrderTestCase" }, groups="Purchase")
 	public void validatingOrderHistoryPage() {
 
 		String productName = "Zara Coat 3";
@@ -63,38 +63,45 @@ public class PlaceOrderFeatureTest extends BaseTest {
 		System.out.println("The product you added in cart is " + orderPage.displayAddedProductName(productName));
 
 	}
-
+	
+	
+	
 	@DataProvider()
-	public Object[][] getData()
+	public Object[][] getData() throws IOException
 
 	{
 
-		// sending data using HashMap, this is because if there are more than 3
-		// parameters in placeOrderTestCase()
-		// then it will be very difficult to manage so many parameters in the method as
-		// a result better way to handle this is by HashMaP
-		
-		HashMap <String, String > map = new HashMap <String , String>();
-		
-	    map.put("email", "rahulexample@abc.com");
-	    map.put("pwd", "ABCD123@abc");
-	    map.put("productName", "ZARA COAT 3");
-	    
-	    
-		HashMap <String, String > map1 = new HashMap <String , String>();
-		
-	    map1.put("email", "harry@styles.com");
-	    map1.put("pwd", "ABCD123@abc");
-	    map1.put("productName", "IPHONE 13 PRO");
-	    
-	    return new Object[][] { {map},{map1} };
-	    
-	    
-	    /* using the Array way of DataProvider
+		List < HashMap <String, String >> data = jsonToHashMap(System.getProperty("user.dir")+ 
+				"/src/test/java/ecommwebsite/data/PurchaseOrder.json");
 
-		return new Object[][] { { "rahulexample@abc.com", "ABCD123@abc", "ZARA COAT 3" },
-				{ "harry@styles.com", "ABCD123@abc", "IPHONE 13 PRO" } };
-				
-		*/		
+		return new Object[][] { {data.get(0)}, { data.get(1)} };
+
 	}
+	
+	
+	
+	/*
+
+	
+
+	*/
+
+	/*
+	 * 
+	 * //using the Array way of DataProvider
+	 * 
+	 * @DataProvider()
+	 *  public Object[][] getData()
+	 * 
+	 * {
+	 * 
+	 * using the Array way of DataProvider
+	 * 
+	 * return new Object[][] { { "rahulexample@abc.com", "ABCD123@abc",
+	 * "ZARA COAT 3" }, { "harry@styles.com", "ABCD123@abc", "IPHONE 13 PRO" } };
+	 * 
+	 * 
+	 * }
+	 */
+
 }

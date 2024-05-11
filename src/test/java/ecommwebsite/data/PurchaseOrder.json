@@ -1,0 +1,20 @@
+
+
+[
+	
+	{
+		
+		"email" : "rahulexample@abc.com",
+		"pwd" : "ABCD123@abc",
+	    "productName" : "ZARA COAT 3"
+		
+	},
+	
+	
+	{
+		"email" : "harry@styles.com",
+		"pwd" : "ABCD123@abc",
+	    "productName" : "IPHONE 13 PRO"
+		
+	}
+]
