@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -28,7 +30,7 @@ import ecommwebsite.pageobjects.LandingPage;
 public class BaseTest
 
 {
-	WebDriver driver;
+	public WebDriver driver;
 	public LandingPage landingPage;
 	
 
@@ -95,6 +97,19 @@ public class BaseTest
 		return data;
 		
 		}
+	
+	
+	public String takeScreenshot(String testCaseName, WebDriver driver) throws IOException
+	{
+		TakesScreenshot ts = (TakesScreenshot)driver;
+		File screenshotFile = ts.getScreenshotAs(OutputType.FILE);
+		
+		File screenshotInLocal = new File(System.getProperty("user.dir")+"/resources/"+  testCaseName +".png");
+		FileUtils.copyFile(screenshotFile, screenshotInLocal);
+		
+		return System.getProperty("user.dir")+"/resources/"+  testCaseName +".png";
+		
+	}
 
 	
 	

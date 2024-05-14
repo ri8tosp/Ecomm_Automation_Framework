@@ -34,9 +34,11 @@ public class ErrorValidationTest extends BaseTest
 		
 		String productName = "Zara Coat 3";
 
-		ProductCatalogue productCatalogue = landingPage.logIntoApp("harry@styles.com", "ABCD13@abc");
+		landingPage.logIntoApp("harry@styles.com", "ABCD13@abc");
 		
-		AssertJUnit.assertEquals("Incorrect email or password.", landingPage.getErrorMessage());
+		//intentionally failing this by passing wrong expected test to check for extent Report implementation
+		
+		Assert.assertEquals(landingPage.getErrorMessage(), "Incorrec email or password.");
 	}
 	
 	
