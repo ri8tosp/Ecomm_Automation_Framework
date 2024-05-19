@@ -18,35 +18,36 @@ public class TestNGListeners extends BaseTest implements ITestListener
 {
 	ExtentTest test;
 	ExtentReports extent = ExtentReporter.getExtentReportObject();
+	ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
 
 	@Override
 	public void onTestStart(ITestResult result) {
 
 		test = extent.createTest(result.getMethod().getMethodName());
+		extentTest.set(test);
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
 		// This method is invoked when a test method passes successfully
-		test.log(Status.PASS, "Test method passed: " + result.getMethod().getMethodName());
+		extentTest.get().log(Status.PASS, "Test method passed: " + result.getMethod().getMethodName());
 	}
 
 	@Override
 	public void onTestFailure(ITestResult result) {
 		// This method is invoked when a test method fails
-		test.log(Status.FAIL, "Test method failed: " + result.getMethod().getMethodName());
-		test.fail(result.getThrowable());
+		extentTest.get().log(Status.FAIL, "Test method failed: " + result.getMethod().getMethodName());
+		extentTest.get().fail(result.getThrowable());
+
+		try {
+			driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		// Now Attaching screenshot of the failure
-		
-	
-			try {
-				driver =  (WebDriver)result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	
+
 		String screenshotFilePath = null;
 		try {
 			screenshotFilePath = takeScreenshot(result.getMethod().getMethodName(), driver);
@@ -56,7 +57,7 @@ public class TestNGListeners extends BaseTest implements ITestListener
 			e.printStackTrace();
 		}
 
-		test.addScreenCaptureFromPath(screenshotFilePath, result.getMethod().getMethodName());
+		extentTest.get().addScreenCaptureFromPath(screenshotFilePath, result.getMethod().getMethodName());
 
 	}
 
