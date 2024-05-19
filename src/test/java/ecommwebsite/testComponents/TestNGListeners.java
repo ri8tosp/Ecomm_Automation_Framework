@@ -65,6 +65,7 @@ public class TestNGListeners extends BaseTest implements ITestListener
 	public void onTestSkipped(ITestResult result) {
 		// This method is invoked when a test method is skipped (not executed)
 		System.out.println("Test method skipped: " + result.getMethod().getMethodName());
+		extentTest.get().log(Status.SKIP, "Test skipped: " + result.getThrowable());
 	}
 
 	@Override
