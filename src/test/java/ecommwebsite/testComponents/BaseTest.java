@@ -46,7 +46,7 @@ public class BaseTest
 
 		properties.load(fis);
 
-		String browserName = properties.getProperty("browser");
+		String browserName = System.getProperty("browser")!=null ? System.getProperty("browser") : properties.getProperty("browser");
 
 		if (browserName.equalsIgnoreCase("chrome")) {
 
