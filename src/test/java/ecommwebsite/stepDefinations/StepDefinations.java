@@ -21,7 +21,7 @@ import io.cucumber.java.en.When;
 public class StepDefinations extends BaseTest
 
 {
-	public LandingPage landingPage;
+    LandingPage landingPage;
 	ProductCatalogue productCatalogue;
 	MyCartPage cartPage;
 	ConfirmationPage confirmedOrder;
@@ -71,4 +71,6 @@ public class StepDefinations extends BaseTest
 	{
 		Assert.assertEquals(confirmedOrder.getConfirmationMsg(), confirmationMessage);
 	}
+	
+	
 }
