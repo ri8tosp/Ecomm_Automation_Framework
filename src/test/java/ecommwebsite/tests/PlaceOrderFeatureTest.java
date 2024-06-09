@@ -46,7 +46,7 @@ public class PlaceOrderFeatureTest extends BaseTest {
 
 		ConfirmationPage confirmedOrder = checkOutPage.placeOrder();
 
-		AssertJUnit.assertEquals(confirmedOrder.getConfirmationMsg(), "THANKYOU FOR THE ORDER.");
+		Assert.assertEquals(confirmedOrder.getConfirmationMsg(), "THANKYOU FOR THE ORDER.");
 
 	}
 
