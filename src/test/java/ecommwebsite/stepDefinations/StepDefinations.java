@@ -70,7 +70,15 @@ public class StepDefinations extends BaseTest
 	public void I_verify_that_confirmation_message_is_displayed(String confirmationMessage)
 	{
 		Assert.assertEquals(confirmedOrder.getConfirmationMsg(), confirmationMessage);
+		driver.close();
 	}
 	
+	
+	@Then("{string} should be displayed")
+	public void message_should_be_displayed(String message)
+	{
+		Assert.assertEquals(landingPage.getErrorMessage(), message);
+		driver.close();
+	}
 	
 }

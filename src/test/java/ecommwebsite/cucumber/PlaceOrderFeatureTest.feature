@@ -7,7 +7,7 @@ Feature: Placing an order for a product on Ecommerce website
   
   Given I am on Ecommerce page 
 
-  @tag2
+  @EndtoEnd
   Scenario Outline: This is a  +(ve) test case of purchasing the order
   
   
