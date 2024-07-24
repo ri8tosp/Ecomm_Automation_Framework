@@ -30,7 +30,7 @@ public class CheckOutPage extends Abstractcomponents
 	WebElement countryTextBox;
 
 	@FindBy(xpath = "//div[@class='form-group']//section[contains(@class,'list-group')]//button")
-	List<WebElement> allContryList;
+	List<WebElement> individualCountry;
 
 	@FindBy(xpath = "//div[@class='actions']/a[contains(text(), 'Place Order ')]")
 	WebElement placeOrder;
@@ -49,7 +49,7 @@ public class CheckOutPage extends Abstractcomponents
 
 		waitForElementToAppear(allCountryDropdowns);
 
-		allContryList.stream().filter(country -> country.getText().equalsIgnoreCase("india")).findFirst().orElse(null)
+		individualCountry.stream().filter(country -> country.getText().equalsIgnoreCase("india")).findFirst().orElse(null)
 				.click();
 
 	}

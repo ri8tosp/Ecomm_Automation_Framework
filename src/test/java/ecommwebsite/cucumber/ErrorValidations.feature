@@ -8,7 +8,7 @@ Feature: Error validation
   Scenario Outline: Title of your scenario outline
     Given I am on Ecommerce page 
     And User logs in with <username> and <password> and lands into the product page
-    Then "Incorrect email or password." should be displayed
+    Then "Incorrec email or password." should be displayed
 
      Examples: 
       | username                        | password                | productName |
