@@ -19,31 +19,30 @@ import ecommwebsite.testComponents.RetryFailedTestCases;
 public class ErrorValidationTest extends BaseTest
 
 {
-	
-	// A test case designed to check for negative scenarios 
-	// note -> have talked with & team about test strategy and concluded that 
-	// we aren't going with one test as one java file but 
-	// we are clubbing multiple test cases into one java file with similar functionality in this case 
+
+	// A test case designed to check for negative scenarios
+	// note -> have talked with & team about test strategy and concluded that
+	// we aren't going with one test as one java file but
+	// we are clubbing multiple test cases into one java file with similar
+	// functionality in this case
 	// error validation
 
-	@Test(groups="ErrorHandling", retryAnalyzer=RetryFailedTestCases.class)
-	
-	public void LoginErrorValidaiton() 
-	
+	@Test(groups = "ErrorHandling", retryAnalyzer = RetryFailedTestCases.class)
+
+	public void LoginErrorValidaiton()
+
 	{
-		
-		
+
 		String productName = "Zara Coat 3";
 
 		landingPage.logIntoApp("harry@styles.com", "ABCD13@abc");
-		
-		//intentionally failing this by passing wrong expected test to check for extent Report implementation
-		
+
+		// intentionally failing this by passing wrong expected test to check for extent
+		// Report implementation
+
 		Assert.assertEquals(landingPage.getErrorMessage(), "Incorrec email or password.");
 	}
-	
-	
-	
+
 	@Test
 	public void productErrorValidation() throws IOException
 
@@ -53,8 +52,6 @@ public class ErrorValidationTest extends BaseTest
 
 		ProductCatalogue productCatalogue = landingPage.logIntoApp("rahulexample@abc.com", "ABCD123@abc");
 
-		List<WebElement> products = productCatalogue.getProductList();
-
 		productCatalogue.addProductToCart(productName);
 
 		MyCartPage cartPage = productCatalogue.goToCart();
@@ -63,12 +60,6 @@ public class ErrorValidationTest extends BaseTest
 
 		Assert.assertFalse(isProductDisplayed);
 
-		
-
-		
-
-
 	}
-	
 
 }
