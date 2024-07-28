@@ -52,6 +52,7 @@ public class ErrorValidationTest extends BaseTest
 
 		ProductCatalogue productCatalogue = landingPage.logIntoApp("rahulexample@abc.com", "ABCD123@abc");
 
+
 		productCatalogue.addProductToCart(productName);
 
 		MyCartPage cartPage = productCatalogue.goToCart();

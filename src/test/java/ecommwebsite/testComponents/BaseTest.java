@@ -42,7 +42,7 @@ public class BaseTest
 
 		FileInputStream fis = new FileInputStream(
 
-				System.getProperty("user.dir") + "/src/main/java/ecommwebsite/resources/GlobalData.properties");
+				System.getProperty("user.dir") + "/src/main/java/ecommwebsite/resources/initialConfig.properties");
 
 		properties.load(fis);
 
