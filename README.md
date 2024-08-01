@@ -36,12 +36,6 @@ This project is a comprehensive Selenium automation framework built using Java 8
 - A web browser (Chrome, Edge, etc.) and corresponding WebDriver installed ( but not compulsory as Selenium 4.6.0, introduced a feature called the WebDriverManager integration, which automatically manages the WebDriver )
 
 
+## Contributing
 
-## Installation
-
-1. Clone the Repository:
-```
-  git clone https://github.com/ri8tosp/Ecomm_Automation_Framework.git
-```
-
-3. 
+Feel free to fork the project and submit pull requests. Contributions are welcome!
