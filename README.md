@@ -16,6 +16,13 @@ This project is a comprehensive Selenium automation framework built using Java 8
 - JSON for Data-driven Testing: Test data is managed using JSON files, allowing dynamic data injection into test scripts.
 
 
+## Framework Structure
+
+- src/main/java: Contains the core framework code, page objects, utilities / AbstractComponents.
+- src/main/resources: Contains the configuration files.
+- src/test/java: Contains test classes, feature files, step definitions and test data files (JSON).
+
+
 ## Setup Instructions
 
 ### Prerequisites
@@ -23,13 +30,8 @@ This project is a comprehensive Selenium automation framework built using Java 8
 - Java 8 or higher installed
 - Maven installed
 - Jenkins installed and configured
-- A web browser (Chrome, Firefox, etc.) and corresponding WebDriver installed
+- A web browser (Chrome, Edge, etc.) and corresponding WebDriver installed ( but not compulsory as Selenium 4.6.0, introduced a feature called the WebDriverManager integration, which automatically manages the WebDriver )
 
-## Framework Structure
-
-- src/main/java: Contains the core framework code, page objects, utilities, and configurations.
-- src/test/java: Contains test classes and step definitions for Cucumber.
-- src/test/resources: Holds feature files for Cucumber and test data files (JSON).
 
 
 ## Installation
