@@ -22,6 +22,9 @@ This project is a comprehensive Selenium automation framework built using Java 8
 - src/main/resources: Contains the configuration files.
 - src/test/java: Contains test classes, feature files, step definitions and test data files (JSON).
 
+  <img width="939" alt="project_structure" src="https://github.com/user-attachments/assets/6ee8f536-0b4e-4130-8811-5e2a3f99eb84">
+
+
 
 ## Setup Instructions
 
