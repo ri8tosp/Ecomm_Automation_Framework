@@ -40,6 +40,13 @@ public class LandingPage extends Abstractcomponents
 	
 	// creating action methods 
 	
+
+	public void openApp()
+	{
+		driver.get("https://rahulshettyacademy.com/client");
+		
+	}
+	
 	public ProductCatalogue logIntoApp(String username, String password)
 	{
 		userName.sendKeys(username);
@@ -50,11 +57,6 @@ public class LandingPage extends Abstractcomponents
 	}
 	
 	
-	public void openApp()
-	{
-		driver.get("https://rahulshettyacademy.com/client");
-		
-	}
 	
 	public String getErrorMessage()
 	{
